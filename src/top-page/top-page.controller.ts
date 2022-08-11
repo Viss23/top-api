@@ -8,11 +8,14 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { FindTopPageDto } from './dto/find-top-page.dto';
 import { TopPageModel } from './top-page.model';
 
-@Controller('product')
-export class ProductController {
+@Controller('top-page')
+export class TopPageController {
+  constructor() {}
+
   @Post('create')
   async create(@Body() dto: Omit<TopPageModel, '_id'>) {}
 
