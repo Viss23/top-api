@@ -10,7 +10,6 @@ export class AuthService {
 
   async create({ email, password }: AuthDto): Promise<Auth> {
     const createdUser = new this.authModel({ email, passwordHash: password });
-    console.log(createdUser);
     return createdUser.save();
   }
 
@@ -19,7 +18,6 @@ export class AuthService {
     if (!user) {
       return false;
     } else {
-      console.log(user);
       return true;
     }
   }
