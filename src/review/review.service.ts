@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Query, Types } from 'mongoose';
 import { CreateReviewDto } from './dto/create-review.dto';
-import { Review, ReviewDocument } from './schemas/review.schema';
+import { Review } from './schemas/review.schema';
 
 @Injectable()
 export class ReviewService {
   constructor(
     @InjectModel(Review.name)
-    private readonly reviewModel: Model<ReviewDocument>,
+    private readonly reviewModel: Model<Review>,
   ) {}
 
   async create(dto: CreateReviewDto): Promise<Review> {
@@ -20,10 +20,7 @@ export class ReviewService {
   }
 
   async findByProductId(productId: string): Promise<Review[]> | null {
-    const a = await this.reviewModel.find({
-      productId,
-    });
-    return a;
+    return this.reviewModel.find({ productId }).exec();
   }
 
   async deleteByProductId(productId: string) {
