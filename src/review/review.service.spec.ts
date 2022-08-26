@@ -35,7 +35,6 @@ describe('ReviewService', () => {
       exec: jest.fn().mockResolvedValueOnce([{ productId: id }]),
     } as any);
     const res = await service.findByProductId(id);
-    console.log(res);
     expect(res[0].productId).toBe(id);
     expect.assertions(1);
   });
