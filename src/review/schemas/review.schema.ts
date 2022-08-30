@@ -14,7 +14,7 @@ export class Review extends Document {
   @Prop()
   rating: number;
   @Prop()
-  productId: Types.ObjectId;
+  productId: string;
 }
 
 export const ReviewSchema = SchemaFactory.createForClass(Review);
