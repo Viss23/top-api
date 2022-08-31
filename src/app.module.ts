@@ -13,7 +13,7 @@ import { getMongoConfig } from './configs/mongo.config';
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(
-      'mongodb://localhost:27017/admin',
+      'mongodb://root:example@host.docker.internal:27017/admin',
       /* imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: getMongoConfig, */

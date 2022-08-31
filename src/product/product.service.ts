@@ -45,11 +45,11 @@ export class ProductService {
         {
           $limit: dto.limit,
         },
-        { $addFields: { prodId: { $toString: '$_id' } } },
+        { $addFields: { Id: { $toString: '$_id' } } },
         {
           $lookup: {
             from: 'reviews',
-            localField: 'prodId',
+            localField: 'Id',
             foreignField: 'productId',
             as: 'reviews',
           },
@@ -58,13 +58,25 @@ export class ProductService {
           $addFields: {
             reviewCount: { $size: '$reviews' },
             reviewAvg: { $avg: '$reviews.rating' },
+            reviews: {
+              $function: {
+                body: `function (reviews) {
+                  reviews.sort(
+                    (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+                  );
+                  return reviews;
+                }`,
+                args: ['$reviews'],
+                lang: 'js',
+              },
+            },
           },
         },
       ])
-      .exec() as unknown; /* as (Product & {
+      .exec() as unknown /* (Product & {
       reviews: Review;
       reviewCount: number;
       reviewAvg: number;
-    })[]; */
+    })[] */;
   }
 }

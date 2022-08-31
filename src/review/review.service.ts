@@ -20,7 +20,6 @@ export class ReviewService {
   }
 
   async findByProductId(productId: string): Promise<Review[]> | null {
-    console.log(productId);
     return this.reviewModel
       .find({ productId: new Types.ObjectId(productId) })
       .exec();
