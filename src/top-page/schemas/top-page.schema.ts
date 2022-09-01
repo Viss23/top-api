@@ -66,4 +66,7 @@ export class TopPage extends Document {
   tags: string[];
 }
 
-export const TopPageSchema = SchemaFactory.createForClass(TopPage);
+export const TopPageSchema = SchemaFactory.createForClass(TopPage).index({
+  seoText: 'text',
+  title: 'text',
+});
