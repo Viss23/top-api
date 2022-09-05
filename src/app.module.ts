@@ -12,12 +12,11 @@ import { getMongoConfig } from './configs/mongo.config';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(
-      'mongodb://root:example@host.docker.internal:27017/admin',
-      /* imports: [ConfigModule],
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: getMongoConfig, */
-    ),
+      useFactory: getMongoConfig,
+    }),
     AuthModule,
     TopPageModule,
     ProductModule,
