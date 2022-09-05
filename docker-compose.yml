@@ -1,6 +1,6 @@
 version: '3.1'
 
-service:
+services:
   top-api:
     image: top-api
     restart: always
