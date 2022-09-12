@@ -7,13 +7,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    step:
-      - uses: actions/checkout@main
+    steps:
+      - uses: actions/checkout@v3
       - name: Publish to registry
-      - uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        registry: docker.pkg.github.com
-        name: docker.pkg.github.com/Viss23/top-api/top-api
-        username: ${{ secrets.Docker_USERNAME}}
-        username: ${{ secrets.Docker_PASSWORD}}
-        tags: "develop"
+        uses: elgohr/Publish-Docker-Github-Action@v4
+        with:
+          registry: docker.pkg.github.com
+          name: docker.pkg.github.com/Viss23/top-api/top-api
+          username: ${{ secrets.Docker_USERNAME}}
+          password: ${{ secrets.Docker_PASSWORD}}
+          tags: 'develop'
