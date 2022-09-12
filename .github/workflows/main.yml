@@ -12,8 +12,7 @@ jobs:
       - name: Publish to registry
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
-          registry: docker.pkg.github.com
-          name: docker.pkg.github.com/Viss23/top-api/top-api
+          name: viss23/top-api/top-api
           username: ${{ secrets.Docker_USERNAME}}
           password: ${{ secrets.Docker_PASSWORD}}
           tags: 'develop'
