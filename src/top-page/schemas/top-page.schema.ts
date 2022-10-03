@@ -33,8 +33,14 @@ export class TopPageAdvantages {
 export const TopPageAdvantagesSchema =
   SchemaFactory.createForClass(TopPageAdvantages);
 
-@Schema()
+@Schema({ timestamps: true })
 export class TopPage extends Document {
+  @Prop()
+  createdAt?: Date;
+
+  @Prop()
+  updatedAt?: Date;
+
   @Prop({ enum: TopLevelCategory })
   firstCategory: TopLevelCategory;
 
